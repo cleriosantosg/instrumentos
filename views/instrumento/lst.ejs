@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Instrumentos</title>
+</head>
+<body>
+    <h1>Lista de Instrumentos</h1>
+    <a href="/instrumento/add">Cadastrar Novo Instrumento</a>
+    <br><br>
+
+    <% if (typeof erro !== 'undefined') { %>
+        <p style="color: red;"><%= erro %></p>
+    <% } %>
+
+    <% if (instrumentos.length === 0) { %>
+        <p>Nenhum instrumento cadastrado no momento. Utilize o link acima para adicionar itens ao estoque.</p>
+    <% } else { %>
+        <table border="1" cellpadding="8" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Fabricante</th>
+                    <th>Preço</th>
+                    <th>Tipo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% instrumentos.forEach(i => { %>
+                    <tr>
+                        <td><%= i.nome %></td>
+                        <td><%= i.fabricante %></td>
+                        <td>R$ <%= Number(i.preco).toFixed(2) %></td>
+                        <td><%= i.tipo %></td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    <% } %>
+</body>
+</html>
